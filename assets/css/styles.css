@@ -110,7 +110,8 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
 .card__num{font:700 15px/1 var(--display);width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:var(--grad);color:#fff;margin-bottom:10px}
 .card h3{font:700 30px/1.05 var(--display);letter-spacing:-.025em;color:#fff}
 .card p{color:#b7b1d1;font-size:16px}
-.card__link{margin-top:auto;padding-top:14px;font-weight:600;color:var(--accent-light);display:inline-flex;gap:8px}
+.card .card__tagline{font:700 clamp(18px,1.45vw,20px)/1.35 var(--display);letter-spacing:-.01em;color:#fff;margin-top:-4px}
+.card__link{margin-top:auto;padding-top:14px;align-self:flex-start;font-weight:600;color:var(--accent-light);display:inline-flex;gap:8px}
 .card__link span{transition:transform .3s}.card__link:hover{color:var(--accent-pale)}.card__link:hover span{transform:translateX(5px)}
 
 /* Approach */
@@ -194,6 +195,7 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
   .hero__grid{grid-template-columns:1fr;gap:72px}
   .hero__media{margin-bottom:20px}
   .cards,.quotes{grid-template-columns:1fr 1fr}
+  .cards .card:last-child{grid-column:1/-1}
   .quote:nth-child(2){margin-top:0}
   .feed{grid-template-columns:repeat(3,1fr)}
   .approach__grid,.contact__grid{grid-template-columns:1fr;gap:44px}
@@ -207,6 +209,7 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
   .chip{font-size:12.5px;padding:10px 14px}
   .phone{width:min(270px,70vw)}
   .cards,.quotes,.about__cols,.form__row{grid-template-columns:1fr}
+  .cards .card:last-child{grid-column:auto}
   .about__cols{gap:18px}
   .feed{grid-template-columns:repeat(2,1fr);gap:10px}
   .post{border-radius:16px}

@@ -83,7 +83,10 @@
 
   // Service CTA pre-selects the form option
   const sel = document.querySelector('select[name=service]');
-  document.querySelectorAll('[data-service]').forEach(a => a.addEventListener('click', () => { sel.value = a.dataset.service; }));
+  document.querySelectorAll('[data-service]').forEach(a => a.addEventListener('click', () => {
+    sel.value = a.dataset.service;
+    sel.dispatchEvent(new Event('change'));
+  }));
 
   // Demo form -> mailto
   const form = document.getElementById('contact-form');

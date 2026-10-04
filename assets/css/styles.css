@@ -13,7 +13,7 @@
   --r:28px; --ease:cubic-bezier(.2,.8,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:104px;overflow-x:clip}
 body{font-family:var(--sans);color:var(--text);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -112,7 +112,8 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
 .card:hover{transform:translateY(-6px);border-color:rgba(79,184,224,.5)}.card:hover::before{opacity:1}
 .card>*{position:relative}
 .card__num{font:700 15px/1 var(--display);width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:var(--grad);color:#fff;margin-bottom:10px}
-.card h3{font:700 30px/1.05 var(--display);letter-spacing:-.025em;color:#fff}
+.card h3{font:700 clamp(24px,6.6vw,30px)/1.08 var(--display);letter-spacing:-.025em;color:#fff;overflow-wrap:break-word;hyphens:manual}
+.card{min-width:0}
 .card p{color:#b7b1d1;font-size:16px}
 .card .card__tagline{font:700 clamp(18px,1.45vw,20px)/1.35 var(--display);letter-spacing:-.01em;color:#fff;margin-top:-4px}
 .card__link{margin-top:auto;padding-top:14px;align-self:flex-start;font-weight:600;color:var(--accent-light);display:inline-flex;gap:8px}
@@ -211,9 +212,6 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
   .container{width:calc(100% - 36px)}
   .hero{padding:120px 0 90px}
   .hero__title{font-size:clamp(44px,12.5vw,64px)}
-}
-@media (max-width:400px){
-  .hero__title .nw{white-space:normal}
   .hero__ctas .btn{flex:1}
   .chip--a{left:-14%;top:16%}.chip--b{right:-12%}.chip--c{left:-8%}
   .chip{font-size:12.5px;padding:10px 14px}
@@ -227,6 +225,14 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
   .card{padding:32px 24px 28px}
   .footer__inner{justify-content:center;text-align:center;flex-direction:column}
   .scroll-cue{display:none}
+}
+@media (max-width:760px){
+  .cards,.quotes{grid-template-columns:1fr}
+  .cards .card:last-child{grid-column:auto}
+  .quote:nth-child(2){margin-top:0}
+}
+@media (max-width:400px){
+  .hero__title .nw{white-space:normal}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}

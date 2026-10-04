@@ -7,10 +7,12 @@
 <title>Social Butterfly Communications | Strategic Social Media Services</title>
 <meta name="description" content="Strategic social media services that turn connections into conversions. Social media management, content marketing and social media advertising.">
 <meta name="theme-color" content="#0d0b1a">
-<link rel="preload" href="assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" href="assets/fonts/bricolage-sub.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-sub.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hero-poster.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="assets/css/styles.css">
-<link rel="icon" href="assets/img/mark.png">
+<link rel="icon" href="assets/img/mark-64.png" type="image/png">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -52,11 +54,9 @@
     </div>
     <div class="hero__media reveal" style="--d:.3s">
       <div class="phone">
-        <video autoplay muted loop playsinline poster="assets/img/hero-poster.webp" preload="metadata">
-          <source src="assets/img/hero.mp4" type="video/mp4">
-        </video>
+        <video id="hero-video" autoplay muted loop playsinline preload="none" width="360" height="640" poster="assets/img/hero-poster.webp" data-src="assets/img/hero-portrait.mp4"></video>
         <div class="phone__ui" aria-hidden="true">
-          <div class="phone__handle"><img src="assets/img/mark.png" alt=""> socialbutterflycommunications</div>
+          <div class="phone__handle"><img src="assets/img/mark-64.png" alt="" width="26" height="26"> socialbutterflycommunications</div>
         </div>
       </div>
       <div class="chip chip--a float" aria-hidden="true">🎯 Strategy</div>
@@ -78,7 +78,7 @@
 
 <!-- ABOUT -->
 <section class="about section" id="about">
-  <img class="about__mark" src="assets/img/mark.png" alt="" aria-hidden="true" width="242" height="235">
+  <img class="about__mark" src="assets/img/mark.webp" alt="" aria-hidden="true" width="242" height="235" loading="lazy" decoding="async">
   <div class="container">
     <p class="label reveal">About us</p>
     <p class="about__statement highlight">As our namesake implies, a social butterfly engages different crowds, sharing the latest trends and buzzworthy content with new acquaintances and friends alike.</p>
@@ -182,14 +182,14 @@
       <a class="btn btn--ghost reveal" href="https://www.instagram.com/socialbutterflycommunications/" target="_blank" rel="noopener">@socialbutterflycommunications ↗</a>
     </div>
     <div class="feed">
-      <a class="post reveal" href="https://www.instagram.com/p/DS_CM48Di4f/" target="_blank" rel="noopener"><img src="assets/img/ig_01.webp" alt="" loading="lazy"><span>It’s been a minute… but we’re back and excited to spread our wings in the new year! 🦋✨</span></a>
-      <a class="post reveal" style="--d:.05s" href="https://www.instagram.com/p/Cg4uFq8uWDB/" target="_blank" rel="noopener"><img src="assets/img/ig_02.webp" alt="We're hiring" loading="lazy"><span>Our team is growing! 🦋</span></a>
-      <a class="post reveal" style="--d:.1s" href="https://www.instagram.com/p/CMLhCqGlsTY/" target="_blank" rel="noopener"><img src="assets/img/ig_03.webp" alt="" loading="lazy"><span>Today, we are proud to celebrate #InternationalWomensDay2021 with the inspiring women all over the world who balance clients, kids and creativity without missing a beat.</span></a>
-      <a class="post reveal" style="--d:.15s" href="https://www.instagram.com/p/CH0-2hcltgC/" target="_blank" rel="noopener"><img src="assets/img/ig_04.webp" alt="" loading="lazy"><span>Innovative #communication tools &amp; trends are sure to make 2021 an exciting year for #digitalmarketers — and we can’t wait! 🙌🏻</span></a>
-      <a class="post reveal" href="https://www.instagram.com/p/B61WGjSFr1T/" target="_blank" rel="noopener"><img src="assets/img/ig_05.webp" alt="" loading="lazy"><span>Organization = efficiency. What are some of your business goals for 2020?</span></a>
-      <a class="post reveal" style="--d:.05s" href="https://www.instagram.com/p/BgE5j-OnHrq/" target="_blank" rel="noopener"><img src="assets/img/ig_06.webp" alt="" loading="lazy"><span>Hats off to all the women who tirelessly follow their passions. We see you!</span></a>
-      <a class="post reveal" style="--d:.1s" href="https://www.instagram.com/p/Bc5inLHHutt/" target="_blank" rel="noopener"><img src="assets/img/ig_07.webp" alt="" loading="lazy"><span>Here’s to hoping you had a much better year than this cat!</span></a>
-      <a class="post reveal" style="--d:.15s" href="https://www.instagram.com/p/Bc5iEQTHD8K/" target="_blank" rel="noopener"><img src="assets/img/ig_08.webp" alt="" loading="lazy"><span>Now that is a #christmastree befitting of a #socialbutterfly! 🦋</span></a>
+      <a class="post reveal" href="https://www.instagram.com/p/DS_CM48Di4f/" target="_blank" rel="noopener"><img src="assets/img/ig_01.webp" srcset="assets/img/ig_01-320.webp 320w, assets/img/ig_01.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>It’s been a minute… but we’re back and excited to spread our wings in the new year! 🦋✨</span></a>
+      <a class="post reveal" style="--d:.05s" href="https://www.instagram.com/p/Cg4uFq8uWDB/" target="_blank" rel="noopener"><img src="assets/img/ig_02.webp" srcset="assets/img/ig_02-320.webp 320w, assets/img/ig_02.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="We're hiring" loading="lazy" decoding="async"><span>Our team is growing! 🦋</span></a>
+      <a class="post reveal" style="--d:.1s" href="https://www.instagram.com/p/CMLhCqGlsTY/" target="_blank" rel="noopener"><img src="assets/img/ig_03.webp" srcset="assets/img/ig_03-320.webp 320w, assets/img/ig_03.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Today, we are proud to celebrate #InternationalWomensDay2021 with the inspiring women all over the world who balance clients, kids and creativity without missing a beat.</span></a>
+      <a class="post reveal" style="--d:.15s" href="https://www.instagram.com/p/CH0-2hcltgC/" target="_blank" rel="noopener"><img src="assets/img/ig_04.webp" srcset="assets/img/ig_04-320.webp 320w, assets/img/ig_04.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Innovative #communication tools &amp; trends are sure to make 2021 an exciting year for #digitalmarketers — and we can’t wait! 🙌🏻</span></a>
+      <a class="post reveal" href="https://www.instagram.com/p/B61WGjSFr1T/" target="_blank" rel="noopener"><img src="assets/img/ig_05.webp" srcset="assets/img/ig_05-320.webp 320w, assets/img/ig_05.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Organization = efficiency. What are some of your business goals for 2020?</span></a>
+      <a class="post reveal" style="--d:.05s" href="https://www.instagram.com/p/BgE5j-OnHrq/" target="_blank" rel="noopener"><img src="assets/img/ig_06.webp" srcset="assets/img/ig_06-320.webp 320w, assets/img/ig_06.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Hats off to all the women who tirelessly follow their passions. We see you!</span></a>
+      <a class="post reveal" style="--d:.1s" href="https://www.instagram.com/p/Bc5inLHHutt/" target="_blank" rel="noopener"><img src="assets/img/ig_07.webp" srcset="assets/img/ig_07-320.webp 320w, assets/img/ig_07.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Here’s to hoping you had a much better year than this cat!</span></a>
+      <a class="post reveal" style="--d:.15s" href="https://www.instagram.com/p/Bc5iEQTHD8K/" target="_blank" rel="noopener"><img src="assets/img/ig_08.webp" srcset="assets/img/ig_08-320.webp 320w, assets/img/ig_08.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Now that is a #christmastree befitting of a #socialbutterfly! 🦋</span></a>
     </div>
   </div>
 </section>
@@ -239,7 +239,7 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <img src="assets/img/logo-white.png" alt="Social Butterfly Communications, LLC" width="165" height="59" loading="lazy">
+    <img src="assets/img/logo-white.png" alt="Social Butterfly Communications, LLC" width="165" height="59" loading="lazy" decoding="async">
     <p>© <span id="yr">2026</span> Social Butterfly Communications, LLC.</p>
     <a href="#home" class="footer__top">Back to top ↑</a>
   </div>

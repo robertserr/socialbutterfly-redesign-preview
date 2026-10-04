@@ -84,11 +84,12 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
 @keyframes cue{80%,100%{transform:translateY(16px);opacity:0}}
 
 /* Marquee */
-.marquee-wrap{overflow:hidden;position:relative;z-index:2;margin-top:-18px;padding:10px 0}
-.marquee{background:var(--grad);color:#fff;overflow:hidden;padding:22px 0;transform:rotate(-1.2deg) scale(1.03)}
-.marquee__track{display:flex;gap:36px;width:max-content;animation:marquee 38s linear infinite;font:700 clamp(20px,2.4vw,30px)/1 var(--display);letter-spacing:-.02em;white-space:nowrap}
+.marquee{position:relative;z-index:2;background:var(--grad);color:#fff;overflow:hidden;padding:22px 0}
+.marquee__track{display:flex;width:max-content;animation:marquee 70s linear infinite;font:700 clamp(20px,2.4vw,30px)/1 var(--display);letter-spacing:-.02em;white-space:nowrap}
+.marquee__group{display:flex;flex:none;align-items:center;gap:36px;padding-right:36px}
 .marquee i{font-style:normal;opacity:.6}
-@keyframes marquee{to{transform:translateX(-50%)}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@keyframes marquee{to{transform:translate3d(-50%,0,0)}}
 
 /* About */
 .about{overflow:hidden}

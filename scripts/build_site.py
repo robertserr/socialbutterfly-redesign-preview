@@ -199,6 +199,7 @@ def build(noindex: bool = False, production: bool = False, out: Path | None = No
 
 PRODUCTION_HTACCESS = r"""# Social Butterfly static site
 DirectoryIndex index.html
+AddHandler application/x-httpd-php74 .php
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -249,6 +250,9 @@ def write_outputs(html_out: str, production: bool, out: Path | None, out_dir: Pa
         if assets_dest.exists():
             shutil.rmtree(assets_dest)
         shutil.copytree(ASSETS, assets_dest)
+        contact_php = ROOT / "contact.php"
+        if contact_php.is_file():
+            shutil.copy2(contact_php, out_dir / "contact.php")
         if production:
             (out_dir / "robots.txt").write_text(
                 "User-agent: *\nAllow: /\n\nSitemap: https://socialbutterfly.agency/sitemap.xml\n",
@@ -313,6 +317,7 @@ def main() -> None:
     html_out = tmpl.render(
         noindex=noindex,
         production=args.production,
+        contact_form_action=("https://socialbutterfly.agency/contact.php" if noindex else "/contact.php"),
         seo=data["seo"],
         hero={**data["hero"], "line2_html": line2_html},
         about=data["about"],

@@ -20,7 +20,7 @@
 # Optional overrides, only if SiteGround changes the login:
 #   SITEGROUND_HOST, SITEGROUND_PORT, SITEGROUND_USERNAME
 #
-# Uploads: index.html, assets/, robots.txt, sitemap.xml, and .htaccess.
+# Uploads: index.html, assets/, robots.txt, sitemap.xml, .htaccess, and contact.php.
 
 name: Upload to SiteGround
 
@@ -72,5 +72,5 @@ jobs:
           USER="${USER:-u1214-2rysfpfe4znk}"
           rsync -avz --exclude '.well-known' \
             -e "ssh -p $PORT -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes" \
-            _site/index.html _site/robots.txt _site/sitemap.xml _site/.htaccess _site/assets \
+            _site/index.html _site/robots.txt _site/sitemap.xml _site/.htaccess _site/contact.php _site/assets \
             "$USER@$HOST:$REMOTE/"

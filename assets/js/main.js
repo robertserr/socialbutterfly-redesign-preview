@@ -105,20 +105,68 @@
     sel.dispatchEvent(new Event('change'));
   }));
 
-  // Demo form -> mailto
+  // Contact form -> PHP handler (JSON via fetch; no-JS posts and redirects)
   const form = document.getElementById('contact-form');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    let ok = true;
-    form.querySelectorAll('[required]').forEach(f => {
-      const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value));
-      f.classList.toggle('invalid', bad); if (bad) ok = false;
+  if (form) {
+    const status = form.querySelector('.form__status');
+    const tInput = form.querySelector('[name=form_t]');
+    const stamp = () => { if (tInput) tInput.value = String(Math.floor(Date.now() / 1000)); };
+    stamp();
+
+    const showStatus = (ok, text) => {
+      if (!status) return;
+      status.hidden = false;
+      status.className = 'form__status ' + (ok ? 'is-ok' : 'is-err');
+      status.textContent = text;
+      status.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    };
+
+    const params = new URLSearchParams(location.search);
+    if (params.get('sent') === '1') {
+      showStatus(true, 'Thank you — your message has been sent. We will be in touch soon.');
+      const contact = document.getElementById('contact');
+      if (contact) contact.scrollIntoView();
+    } else if (params.get('error') === '1') {
+      showStatus(false, 'Sorry, the message could not be sent. Please try again or email us directly.');
+      const contact = document.getElementById('contact');
+      if (contact) contact.scrollIntoView();
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      let ok = true;
+      form.querySelectorAll('[required]').forEach(f => {
+        const bad = !f.value.trim() || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(f.value));
+        f.classList.toggle('invalid', bad); if (bad) ok = false;
+      });
+      if (!ok) {
+        showStatus(false, 'Please check the required fields and try again.');
+        return;
+      }
+      stamp();
+      const btn = form.querySelector('[type=submit]');
+      if (btn) btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json', 'X-Requested-With': 'fetch' }
+        });
+        const data = await res.json().catch(() => null);
+        if (data && data.ok) {
+          showStatus(true, data.message || 'Thank you — your message has been sent.');
+          form.reset();
+          stamp();
+        } else {
+          showStatus(false, (data && data.message) || 'Sorry, the message could not be sent. Please try again or email us directly.');
+        }
+      } catch (err) {
+        HTMLFormElement.prototype.submit.call(form);
+      } finally {
+        if (btn) btn.disabled = false;
+      }
     });
-    if (!ok) return;
-    const d = Object.fromEntries(new FormData(form));
-    const body = `Name: ${d.first} ${d.last}\nPhone: ${d.phone}\nEmail: ${d.email}\nCompany: ${d.company}\nService: ${d.service}\n\n${d.message}`;
-    location.href = `mailto:meghan@socialbutterfly.agency?subject=${encodeURIComponent('Website inquiry' + (d.service ? ' – ' + d.service : ''))}&body=${encodeURIComponent(body)}`;
-  });
+  }
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();

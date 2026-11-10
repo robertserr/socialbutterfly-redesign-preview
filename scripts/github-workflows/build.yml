@@ -1,0 +1,45 @@
+name: Build site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - content/**
+      - templates/**
+      - scripts/**
+      - requirements-build.txt
+      - .github/workflows/build.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build tools
+        run: pip install -r requirements-build.txt
+
+      - name: Build preview pages
+        run: python scripts/build_site.py --noindex
+
+      - name: Commit built page if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/img/meghan-480.webp assets/img/meghan-720.webp assets/img/meghan-960.webp assets/img/meghan-720.jpg || true
+          if git diff --staged --quiet; then
+            echo "No built-file changes."
+          else
+            git commit -m "Rebuild site from content"
+            git push
+          fi

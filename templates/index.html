@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+{% if noindex %}<meta name="robots" content="noindex, nofollow">
+{% endif %}<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ seo.title }}</title>
+<meta name="description" content="{{ seo.description }}">
+<meta name="theme-color" content="#071C24">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preload" href="assets/fonts/barlow-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hero-poster.webp" as="image" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/img/apple-touch.png">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#home" class="nav__logo" aria-label="Social Butterfly home"><picture><source type="image/webp" srcset="assets/img/logo-on-dark.webp"><img src="assets/img/logo-on-dark.png" alt="Social Butterfly Communications" width="220" height="57"></picture></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#social">Social Media</a>
+      <a href="#testimonials">Testimonials</a>
+    </nav>
+    <a href="#contact" class="btn btn--sm btn--glow nav__cta">{{ hero.primaryCta }} <span aria-hidden="true">→</span></a>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about">About</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#social">Social Media</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="blob blob--1"></span><span class="blob blob--2"></span><span class="blob blob--3"></span>
+    <div class="grain"></div>
+  </div>
+  <div class="container hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow reveal"><span class="dot"></span> {{ hero.eyebrow }}</p>
+      <h1 class="hero__title split"><span class="nl">{{ hero.headlineLine1 }}</span> <span class="nw">{{ hero.line2_html|safe }}</span></h1>
+      <p class="hero__sub reveal" style="--d:.5s">{{ hero.subhead }}</p>
+      <div class="hero__ctas reveal" style="--d:.65s">
+        <a href="#contact" class="btn btn--glow">{{ hero.primaryCta }} <span aria-hidden="true">→</span></a>
+        <a href="#services" class="btn btn--ghost">{{ hero.secondaryCta }}</a>
+      </div>
+    </div>
+    <div class="hero__media reveal" style="--d:.3s">
+      <div class="phone">
+        <video id="hero-video" autoplay muted loop playsinline preload="none" width="360" height="640" poster="assets/img/hero-poster.webp" data-src="assets/img/hero-portrait.mp4"></video>
+        <div class="phone__ui" aria-hidden="true">
+          <div class="phone__handle"><img src="assets/img/mark-badge-48.png" alt="" width="26" height="26"> {{ instagram_handle }}</div>
+        </div>
+      </div>
+      <div class="chip chip--a float" aria-hidden="true">{{ hero.tags[0].emoji }} {{ hero.tags[0].label }}</div>
+      <div class="chip chip--b float" style="--f:1.2s" aria-hidden="true">{{ hero.tags[1].emoji }} {{ hero.tags[1].label }}</div>
+      <div class="chip chip--c float" style="--f:.6s" aria-hidden="true">{{ hero.tags[2].emoji }} {{ hero.tags[2].label }}</div>
+    </div>
+  </div>
+  <a href="#about" class="scroll-cue" aria-label="Scroll to About"><span></span></a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" role="region" aria-label="Services">
+  <p class="sr-only">{{ banner_sr }}</p>
+  <div class="marquee__track" aria-hidden="true">
+    <div class="marquee__group">{{ banner_group|safe }}</div>
+    <div class="marquee__group">{{ banner_group|safe }}</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+  <img class="about__mark" src="assets/img/mark.webp" alt="" aria-hidden="true" width="320" height="313" loading="lazy" decoding="async">
+  <div class="container about__layout">
+    <figure class="about__portrait reveal">
+      <picture>
+        <source type="image/webp" srcset="assets/img/meghan-480.webp 480w, assets/img/meghan-720.webp 720w, assets/img/meghan-960.webp 960w" sizes="(max-width: 760px) min(100vw - 36px, 420px), 400px">
+        <img src="assets/img/meghan-720.jpg" alt="{{ about.photoAlt }}" width="720" height="900" loading="lazy" decoding="async">
+      </picture>
+      <figcaption>{{ about.caption }}</figcaption>
+    </figure>
+    <p class="label about__label reveal">About us</p>
+    <div class="about__text">
+      <p class="about__lead highlight reveal">{{ about.paragraph1 }}</p>
+      <p class="about__body reveal" style="--d:.1s">{{ about.paragraph2 }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services section section--dark" id="services">
+  <div class="container">
+    <div class="section__head">
+      <p class="label reveal">Services</p>
+      <h2 class="h2 split">What we do for <em>your brand</em></h2>
+    </div>
+    <div class="cards">
+{{ services_html|safe }}    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach section" id="approach">
+  <div class="approach__bg" aria-hidden="true"></div>
+  <div class="container approach__grid">
+    <div>
+      <p class="label reveal">Our approach</p>
+      <h2 class="approach__mantra">
+        <span class="line reveal">{{ approach.line1 }}</span>
+        <span class="line reveal" style="--d:.12s">{{ approach.line2 }}</span>
+        <span class="line reveal grad" style="--d:.24s">{{ approach.line3 }}</span>
+      </h2>
+    </div>
+    <div class="approach__copy glass reveal" style="--d:.2s">
+      <p>{{ approach.paragraph1 }}</p>
+      <p>{{ approach.paragraph2 }}</p>
+      <ol class="steps">
+        <li><span>01</span>{{ approach.steps[0] }}</li><li><span>02</span>{{ approach.steps[1] }}</li><li><span>03</span>{{ approach.steps[2] }}</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials section" id="testimonials">
+  <div class="container">
+    <div class="section__head">
+      <p class="label reveal">Testimonials</p>
+      <h2 class="h2 split">Kind words from <em>our clients</em></h2>
+    </div>
+    <div class="quotes">
+{{ testimonials_html|safe }}    </div>
+  </div>
+</section>
+
+<!-- SOCIAL FEED -->
+<section class="social section section--dark" id="social">
+  <div class="container">
+    <div class="section__head section__head--row">
+      <div>
+        <p class="label reveal">Social media feed</p>
+        <h2 class="h2 split">Fresh from <em>the feed</em></h2>
+      </div>
+      <a class="btn btn--ghost reveal" href="{{ contact.instagram }}" target="_blank" rel="noopener">@{{ instagram_handle }} ↗</a>
+    </div>
+    <div class="feed">
+      <a class="post reveal" href="https://www.instagram.com/p/DS_CM48Di4f/" target="_blank" rel="noopener"><img src="assets/img/ig_01.webp" srcset="assets/img/ig_01-320.webp 320w, assets/img/ig_01.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>It’s been a minute… but we’re back and excited to spread our wings in the new year! 🦋✨</span></a>
+      <a class="post reveal" style="--d:.05s" href="https://www.instagram.com/p/Cg4uFq8uWDB/" target="_blank" rel="noopener"><img src="assets/img/ig_02.webp" srcset="assets/img/ig_02-320.webp 320w, assets/img/ig_02.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="We're hiring" loading="lazy" decoding="async"><span>Our team is growing! 🦋</span></a>
+      <a class="post reveal" style="--d:.1s" href="https://www.instagram.com/p/CMLhCqGlsTY/" target="_blank" rel="noopener"><img src="assets/img/ig_03.webp" srcset="assets/img/ig_03-320.webp 320w, assets/img/ig_03.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Today, we are proud to celebrate #InternationalWomensDay2021 with the inspiring women all over the world who balance clients, kids and creativity without missing a beat.</span></a>
+      <a class="post reveal" style="--d:.15s" href="https://www.instagram.com/p/CH0-2hcltgC/" target="_blank" rel="noopener"><img src="assets/img/ig_04.webp" srcset="assets/img/ig_04-320.webp 320w, assets/img/ig_04.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Innovative #communication tools &amp; trends are sure to make 2021 an exciting year for #digitalmarketers — and we can’t wait! 🙌🏻</span></a>
+      <a class="post reveal" href="https://www.instagram.com/p/B61WGjSFr1T/" target="_blank" rel="noopener"><img src="assets/img/ig_05.webp" srcset="assets/img/ig_05-320.webp 320w, assets/img/ig_05.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Organization = efficiency. What are some of your business goals for 2020?</span></a>
+      <a class="post reveal" style="--d:.05s" href="https://www.instagram.com/p/BgE5j-OnHrq/" target="_blank" rel="noopener"><img src="assets/img/ig_06.webp" srcset="assets/img/ig_06-320.webp 320w, assets/img/ig_06.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Hats off to all the women who tirelessly follow their passions. We see you!</span></a>
+      <a class="post reveal" style="--d:.1s" href="https://www.instagram.com/p/Bc5inLHHutt/" target="_blank" rel="noopener"><img src="assets/img/ig_07.webp" srcset="assets/img/ig_07-320.webp 320w, assets/img/ig_07.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Here’s to hoping you had a much better year than this cat!</span></a>
+      <a class="post reveal" style="--d:.15s" href="https://www.instagram.com/p/Bc5iEQTHD8K/" target="_blank" rel="noopener"><img src="assets/img/ig_08.webp" srcset="assets/img/ig_08-320.webp 320w, assets/img/ig_08.webp 600w" sizes="(max-width:680px) 46vw, (max-width:1080px) 31vw, 290px" width="600" height="600" alt="" loading="lazy" decoding="async"><span>Now that is a #christmastree befitting of a #socialbutterfly! 🦋</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+  <div class="contact__bg" aria-hidden="true"><span class="blob blob--1"></span><span class="blob blob--2"></span></div>
+  <div class="container contact__grid">
+    <div class="contact__intro">
+      <p class="label reveal">Contact</p>
+      <h2 class="contact__title split">{{ contact_heading_html|safe }}</h2>
+      <p class="reveal">{{ contact.intro }}</p>
+      <ul class="contact__list reveal">
+        <li><a href="tel:{{ phone_tel }}"><span class="ic">☎</span>{{ contact.phone }}</a></li>
+        <li><a href="mailto:{{ contact.email }}"><span class="ic">✉</span>{{ contact.email }}</a></li>
+      </ul>
+      <div class="socials reveal">
+        <a href="{{ contact.facebook }}" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-2.8 0-4 1.7-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a href="{{ contact.twitter }}" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg></a>
+        <a href="{{ contact.instagram }}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 8c0-1.8-.5-3.3-1.7-4.3C19 2.6 17.5 2.1 15.8 2 14 2 10 2 8.2 2 6.5 2.1 5 2.6 3.8 3.7 2.6 4.8 2.1 6.3 2 8 2 9.9 2 14.1 2 16c.1 1.7.6 3.2 1.8 4.3 1.2 1.1 2.7 1.6 4.4 1.7h7.6c1.7-.1 3.2-.6 4.4-1.7 1.2-1.1 1.7-2.6 1.7-4.3.1-1.9.1-6.1 0-8zm-2.4 10.9a3.4 3.4 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.6.4s-4.4.1-5.6-.4a3.4 3.4 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.9s-.1-4.6.4-5.9a3.4 3.4 0 0 1 1.9-1.9C7.6 4.7 10.8 4.8 12 4.8s4.4-.1 5.6.4a3.4 3.4 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.9s.1 4.6-.4 5.9z"/></svg></a>
+      </div>
+    </div>
+    <form class="form glass reveal" style="--d:.15s" id="contact-form" novalidate>
+      <div class="form__row">
+        <label><span>First Name</span><input name="first" autocomplete="given-name" required></label>
+        <label><span>Last Name</span><input name="last" autocomplete="family-name" required></label>
+      </div>
+      <div class="form__row">
+        <label><span>Phone</span><input name="phone" type="tel" autocomplete="tel"></label>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+      </div>
+      <div class="form__row">
+        <label><span>Company Name</span><input name="company" autocomplete="organization"></label>
+        <label><span>Service Interested In</span>
+          <select name="service">
+            <option value="">—Please choose an option—</option>
+            {{ service_options|safe }}
+          </select></label>
+      </div>
+      <label><span>Message</span><textarea name="message" rows="5"></textarea></label>
+      <button class="btn btn--glow btn--block" type="submit">Send message <span aria-hidden="true">→</span></button>
+      <p class="form__note">Demo form: opens your email app addressed to {{ contact.email }}. Connect to the live form handler (e.g. Contact Form 7) at launch.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <picture><source type="image/webp" srcset="assets/img/logo-on-dark.webp"><img src="assets/img/logo-on-dark.png" alt="Social Butterfly Communications" width="220" height="57" loading="lazy" decoding="async"></picture>
+    <p>© <span id="yr">2026</span> {{ contact.legalName }}</p>
+    <a href="#home" class="footer__top">Back to top ↑</a>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

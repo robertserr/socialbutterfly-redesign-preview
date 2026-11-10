@@ -1,0 +1,64 @@
+# Manual upload to SiteGround. This does not run on its own.
+# Do not turn on a push trigger until WordPress has been backed up
+# and the SiteGround secrets below have been added.
+#
+# Required GitHub secrets (Settings → Secrets and variables → Actions):
+#   SITEGROUND_HOST      SSH/SFTP hostname from Site Tools
+#   SITEGROUND_PORT      Usually 18765 for SiteGround SSH (sometimes 22)
+#   SITEGROUND_USERNAME  The SiteGround SSH/SFTP username
+#   SITEGROUND_SSH_KEY   A private SSH key whose public half is added in Site Tools
+#   SITEGROUND_PATH      The folder to upload into, e.g. /home/customer/www/socialbutterfly.agency/public_html
+#
+# This job builds a public (indexable) copy of the site and uploads
+# index.html, assets, and robots.txt. It does not delete existing files,
+# so leftover WordPress files will stay until they are removed by hand.
+
+name: Upload to SiteGround
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check SiteGround secrets
+        env:
+          HOST: ${{ secrets.SITEGROUND_HOST }}
+          USER: ${{ secrets.SITEGROUND_USERNAME }}
+          KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
+          REMOTE: ${{ secrets.SITEGROUND_PATH }}
+        run: |
+          if [ -z "$HOST" ] || [ -z "$USER" ] || [ -z "$KEY" ] || [ -z "$REMOTE" ]; then
+            echo "SiteGround secrets are not set yet. Add SITEGROUND_HOST, SITEGROUND_PORT, SITEGROUND_USERNAME, SITEGROUND_SSH_KEY, and SITEGROUND_PATH, then run this workflow again."
+            exit 1
+          fi
+
+      - name: Install build tools
+        run: pip install -r requirements-build.txt
+
+      - name: Build production files
+        run: python scripts/build_site.py --production --out-dir _site
+
+      - name: Upload to SiteGround over SSH
+        env:
+          HOST: ${{ secrets.SITEGROUND_HOST }}
+          PORT: ${{ secrets.SITEGROUND_PORT }}
+          USER: ${{ secrets.SITEGROUND_USERNAME }}
+          KEY: ${{ secrets.SITEGROUND_SSH_KEY }}
+          REMOTE: ${{ secrets.SITEGROUND_PATH }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          PORT="${PORT:-18765}"
+          rsync -avz -e "ssh -p $PORT -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes" \
+            _site/index.html _site/robots.txt _site/assets \
+            "$USER@$HOST:$REMOTE/"

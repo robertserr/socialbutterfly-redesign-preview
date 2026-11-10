@@ -1,0 +1,218 @@
+media:
+  input: assets/img
+  output: assets/img
+  extensions: [png, jpg, jpeg, webp]
+  rename: safe
+
+content:
+  - name: site
+    label: Site copy
+    type: file
+    path: content/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: hero
+        label: Homepage
+        type: object
+        description: The big message at the top of the page.
+        fields:
+          - name: eyebrow
+            label: Small line above the headline
+            type: string
+            description: A short label above the headline, usually the company name.
+          - name: headlineLine1
+            label: Headline, first line
+            type: string
+            description: The first line of the large headline.
+          - name: headlineLine2
+            label: Headline, second line
+            type: string
+            description: The second line of the large headline.
+          - name: highlight
+            label: Highlighted word
+            type: string
+            description: The word in the second line that should appear in the blue highlight, including any period.
+          - name: subhead
+            label: Subhead
+            type: text
+            description: The shorter sentence just under the headline.
+          - name: primaryCta
+            label: Main button
+            type: string
+            description: The primary button on the homepage and in the top menu (for example, Let's Talk).
+          - name: secondaryCta
+            label: Second button
+            type: string
+            description: The quieter button under the headline (for example, Explore services).
+          - name: tags
+            label: Floating tags
+            type: object
+            list: true
+            description: The three small labels that float around the phone photo (Strategy, Advertising, Content).
+            fields:
+              - name: emoji
+                label: Emoji
+                type: string
+                description: A single emoji shown on the tag.
+              - name: label
+                label: Label
+                type: string
+                description: The word on the tag.
+      - name: banner
+        label: Keyword banner
+        type: string
+        list: true
+        description: Each item is one phrase in the scrolling banner under the homepage.
+      - name: about
+        label: About
+        type: object
+        description: The About section, including Meghan's photo and the two paragraphs next to it.
+        fields:
+          - name: caption
+            label: Photo caption
+            type: string
+            description: The line under the photo. Keep the period if you use one.
+          - name: paragraph1
+            label: First paragraph
+            type: text
+            description: The first paragraph next to the photo.
+          - name: paragraph2
+            label: Second paragraph
+            type: text
+            description: The second paragraph next to the photo.
+          - name: photo
+            label: Photo
+            type: image
+            description: Meghan's photo. Use a clear portrait and keep her head fully in the frame.
+            options:
+              extensions: [jpg, jpeg, png, webp]
+          - name: photoAlt
+            label: Photo description (for screen readers)
+            type: string
+            description: A short description of the photo for people who cannot see it.
+      - name: services
+        label: Service cards
+        type: object
+        list: true
+        description: The three service cards. The titles also appear in the contact form menu.
+        fields:
+          - name: title
+            label: Title
+            type: string
+            description: The card title, such as Strategy + Development.
+          - name: tagline
+            label: Tagline
+            type: string
+            description: The short line just under the title.
+          - name: body
+            label: Body
+            type: text
+            description: The main description on the card.
+          - name: button
+            label: Button text
+            type: string
+            description: The link at the bottom of the card, such as Let's Talk Strategy.
+      - name: approach
+        label: Slogan and approach
+        type: object
+        description: The "We test. We optimize. We improve." section and the copy beside it.
+        fields:
+          - name: line1
+            label: Slogan, line 1
+            type: string
+            description: The first large slogan line.
+          - name: line2
+            label: Slogan, line 2
+            type: string
+            description: The second large slogan line.
+          - name: line3
+            label: Slogan, line 3
+            type: string
+            description: The third large slogan line (shown in the blue highlight).
+          - name: paragraph1
+            label: First paragraph
+            type: text
+            description: The first paragraph beside the slogan.
+          - name: paragraph2
+            label: Second paragraph
+            type: text
+            description: The second paragraph beside the slogan.
+          - name: steps
+            label: Steps
+            type: string
+            list: true
+            description: The three short steps listed under the approach copy, in order.
+      - name: testimonials
+        label: Testimonials
+        type: object
+        list: true
+        description: Client quotes. Use real quotes only.
+        fields:
+          - name: quote
+            label: Quote
+            type: text
+            description: The client's words. You do not need to add quotation marks.
+          - name: name
+            label: Name
+            type: string
+            description: The client's name.
+          - name: role
+            label: Title and company
+            type: string
+            description: Their job title and company, if you have it.
+      - name: contact
+        label: Contact
+        type: object
+        description: Phone, email, social links, and the contact section text.
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            description: The large heading, such as Let's talk.
+          - name: headingHighlight
+            label: Highlighted word
+            type: string
+            description: The word in the heading that should appear in the blue highlight, including any period.
+          - name: intro
+            label: Intro sentence
+            type: text
+            description: The short sentence under the heading.
+          - name: phone
+            label: Phone number
+            type: string
+            description: How the phone number should appear on the page, such as 561.740.6714.
+          - name: email
+            label: Email
+            type: string
+            description: The public email address. This also updates the contact form.
+          - name: facebook
+            label: Facebook link
+            type: string
+            description: The full URL of the Facebook page.
+          - name: twitter
+            label: X (Twitter) link
+            type: string
+            description: The full URL of the X / Twitter profile.
+          - name: instagram
+            label: Instagram link
+            type: string
+            description: The full URL of the Instagram profile.
+          - name: legalName
+            label: Legal name in the footer
+            type: string
+            description: The company name in the copyright line.
+      - name: seo
+        label: Browser tab and search description
+        type: object
+        description: Shown in the browser tab and used by search engines.
+        fields:
+          - name: title
+            label: Browser tab title
+            type: string
+            description: The text that appears in the browser tab.
+          - name: description
+            label: Short description
+            type: text
+            description: A one- or two-sentence summary of the site.

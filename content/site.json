@@ -1,0 +1,107 @@
+{
+  "seo": {
+    "title": "Social Butterfly Communications | Turn Conversations into Customers",
+    "description": "Turn conversations into customers. Strategic social media services to turn interest into action: strategy + development, creation + execution, and advertising + insights."
+  },
+  "hero": {
+    "eyebrow": "Social Butterfly Communications",
+    "headlineLine1": "Turn Conversations",
+    "headlineLine2": "into Customers.",
+    "highlight": "Customers.",
+    "subhead": "Strategic Social Media Services to Turn Interest into Action.",
+    "primaryCta": "Let's Talk",
+    "secondaryCta": "Explore services",
+    "tags": [
+      {
+        "emoji": "🎯",
+        "label": "Strategy"
+      },
+      {
+        "emoji": "📈",
+        "label": "Advertising"
+      },
+      {
+        "emoji": "💬",
+        "label": "Content"
+      }
+    ]
+  },
+  "banner": [
+    "Paid and Organic Social Media Strategy",
+    "Lead Generation",
+    "Strategic Advertising",
+    "Copywriting",
+    "Content Creation",
+    "Influencer & User-Generated Content",
+    "Video Creation",
+    "Graphic Design",
+    "Reputation Management"
+  ],
+  "about": {
+    "caption": "Meghan Blackford, Owner.",
+    "paragraph1": "As our namesake implies, we know how to build buzz around products, services and special events and keep the conversation going with the right people. We tailor our social media services to your goals, whether you need a single campaign or someone to manage it all.",
+    "paragraph2": "From strategy and copywriting to paid advertising, we create content that gives new audiences a reason to stop scrolling, get curious and reach out.",
+    "photo": "assets/img/meghan-720.jpg",
+    "photoAlt": "Meghan Blackford, owner of Social Butterfly Communications"
+  },
+  "services": [
+    {
+      "title": "Strategy + Development",
+      "tagline": "Bring your brand to life with a social media presence that stands out.",
+      "body": "Through competitive analysis, audience research and brand positioning, we identify what sets your business apart. Then we develop content themes, platform recommendations and campaign plans that turn those insights into a clear social media strategy.",
+      "button": "Let’s Talk Strategy."
+    },
+    {
+      "title": "Creation + Execution",
+      "tagline": "Spark a connection with prospective customers.",
+      "body": "Give your audience a reason to stop scrolling. We create compelling graphics, videos and copy that capture your brand’s personality with clear calls-to-action. Then, we handle scheduling, publishing and community engagement to keep the conversation flowing.",
+      "button": "Let’s Talk Content."
+    },
+    {
+      "title": "Advertising + Insights",
+      "tagline": "Test new audiences and optimize content performance.",
+      "body": "Turn interest into action with targeted social advertising. We develop creative, manage campaigns and track performance to refine your message, optimize your budget and support your business goals.",
+      "button": "Let’s Talk Results."
+    }
+  ],
+  "approach": {
+    "line1": "We test.",
+    "line2": "We optimize.",
+    "line3": "We improve.",
+    "paragraph1": "We believe that social media should constantly evolve, just as technology does. 99 percent of the time, what worked last year – or last month – will yield less effective results in today’s marketplace. For this reason, we push ourselves to innovate new ways to spark curiosity and foster relationships.",
+    "paragraph2": "Our focus on research and analysis contributes to content strategies that are rooted in measurable results. All too often, what separates well-executed campaigns from poorly performing content is an effective paid promotion strategy. This is why discovery, research and metrics are at the heart of our approach.",
+    "steps": [
+      "Discovery",
+      "Research",
+      "Metrics"
+    ]
+  },
+  "testimonials": [
+    {
+      "quote": "Meghan is highly organized and a pleasure to work with. She puts in the necessary time and effort to research and learn your business in order to maximize ROI of social media marketing and advertising. She really makes the entire process a breeze.",
+      "name": "Derek Bell",
+      "role": "Marketing Director, Orlando Clinical Research Center"
+    },
+    {
+      "quote": "Meghan is reliable, flexible and brings a positive attitude to our business. We appreciate her hard work and attention to detail handling our social media efforts.",
+      "name": "Alan Stevens",
+      "role": "Senior Communication Advisor, Florida House Experience"
+    },
+    {
+      "quote": "Meghan demonstrated a keen eye for public relations while overseeing my social media efforts.",
+      "name": "Linda Plant",
+      "role": "Owner"
+    }
+  ],
+  "contact": {
+    "heading": "Let's talk.",
+    "headingHighlight": "talk.",
+    "intro": "Contact us today to learn how to inspire your followers to engage with your brand!",
+    "phone": "561.740.6714",
+    "email": "meghan@socialbutterfly.agency",
+    "facebook": "https://www.facebook.com/socialbutterflycommunicationsllc/",
+    "twitter": "https://twitter.com/SocialBComms",
+    "instagram": "https://www.instagram.com/socialbutterflycommunications/",
+    "legalName": "Social Butterfly Communications, LLC."
+  }
+}

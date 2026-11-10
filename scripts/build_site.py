@@ -269,6 +269,10 @@ def main() -> None:
         testimonials_html=testimonials_html(raw["testimonials"]),
         service_options=service_options(raw["services"]),
         contact_heading_html=highlight_in(heading, heading_hl),
+        services_heading_html=highlight_in(
+            raw.get("servicesHeading", {}).get("heading") or "Smarter social media starts here",
+            raw.get("servicesHeading", {}).get("headingHighlight") or "starts here",
+        ),
     )
     write_outputs(html_out, args.production, args.out, args.out_dir)
 

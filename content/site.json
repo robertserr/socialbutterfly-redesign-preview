@@ -44,6 +44,10 @@
     "photo": "assets/img/meghan-720.jpg",
     "photoAlt": "Meghan Blackford, owner of Social Butterfly Communications"
   },
+  "servicesHeading": {
+    "heading": "Smarter social media starts here",
+    "headingHighlight": "starts here"
+  },
   "services": [
     {
       "title": "Strategy + Development",

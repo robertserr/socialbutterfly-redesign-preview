@@ -92,6 +92,19 @@ content:
             label: Photo description (for screen readers)
             type: string
             description: A short description of the photo for people who cannot see it.
+      - name: servicesHeading
+        label: Services heading
+        type: object
+        description: The heading above the three service cards.
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+            description: The section heading, such as Smarter social media starts here.
+          - name: headingHighlight
+            label: Highlighted words
+            type: string
+            description: The word or words in the heading that should appear in the blue highlight.
       - name: services
         label: Service cards
         type: object

@@ -197,6 +197,48 @@ def build(noindex: bool = False, production: bool = False, out: Path | None = No
     return html_out
 
 
+PRODUCTION_HTACCESS = r"""# Social Butterfly static site
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Leave certificate challenges alone, then force HTTPS and apex host.
+  RewriteRule ^\.well-known/ - [L]
+  RewriteCond %{HTTP_HOST} ^www\.socialbutterfly\.agency$ [NC]
+  RewriteRule ^ https://socialbutterfly.agency%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://socialbutterfly.agency%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=10886400; preload"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 5 minutes"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript application/json image/svg+xml
+</IfModule>
+
+<FilesMatch "\\.(html)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=300, must-revalidate"
+  </IfModule>
+</FilesMatch>
+"""
+
+
 def write_outputs(html_out: str, production: bool, out: Path | None, out_dir: Path | None) -> Path:
     if out_dir:
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -207,10 +249,25 @@ def write_outputs(html_out: str, production: bool, out: Path | None, out_dir: Pa
         if assets_dest.exists():
             shutil.rmtree(assets_dest)
         shutil.copytree(ASSETS, assets_dest)
-        (out_dir / ".nojekyll").write_text("", encoding="utf-8")
         if production:
-            (out_dir / "robots.txt").write_text("User-agent: *\nAllow: /\n", encoding="utf-8")
+            (out_dir / "robots.txt").write_text(
+                "User-agent: *\nAllow: /\n\nSitemap: https://socialbutterfly.agency/sitemap.xml\n",
+                encoding="utf-8",
+            )
+            (out_dir / "sitemap.xml").write_text(
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n"
+                "  <url>\n"
+                "    <loc>https://socialbutterfly.agency/</loc>\n"
+                "    <changefreq>weekly</changefreq>\n"
+                "    <priority>1.0</priority>\n"
+                "  </url>\n"
+                "</urlset>\n",
+                encoding="utf-8",
+            )
+            (out_dir / ".htaccess").write_text(PRODUCTION_HTACCESS, encoding="utf-8")
         else:
+            (out_dir / ".nojekyll").write_text("", encoding="utf-8")
             (out_dir / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
         print(f"wrote site folder {out_dir}")
         return dest
@@ -255,6 +312,7 @@ def main() -> None:
     heading_hl = raw["contact"].get("headingHighlight") or "talk."
     html_out = tmpl.render(
         noindex=noindex,
+        production=args.production,
         seo=data["seo"],
         hero={**data["hero"], "line2_html": line2_html},
         about=data["about"],

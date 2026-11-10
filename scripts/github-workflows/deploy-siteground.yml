@@ -1,24 +1,26 @@
 # Manual upload to SiteGround. This does not run on its own.
-# Do not start it until: (1) WordPress in public_html has been backed up,
-# (2) the public SSH key has been added in Site Tools → SSH Keys Manager,
-# and (3) the GitHub secret SITEGROUND_SSH_KEY holds the matching private key.
 #
-# Known SiteGround details for socialbutterfly.agency (StartUp):
-#   Host:     gtxm1087.siteground.biz
+# WordPress was moved out of public_html on 2026-11-10 to:
+#   /home/u1214-2rysfpfe4znk/www/socialbutterfly.agency/wp-old-2026-11-10/
+# The live site is the static production build. This job rebuilds that
+# public (indexable) copy and uploads it. It does not delete files, and
+# it never touches .well-known.
+#
+# SiteGround details for socialbutterfly.agency (StartUp):
+#   Host:     gtxm1087.siteground.biz  (A record 34.174.165.188)
 #   Port:     18765
 #   Username: u1214-2rysfpfe4znk
-#   Folder:   the site's public_html directory
+#   Path:     /home/u1214-2rysfpfe4znk/www/socialbutterfly.agency/public_html
 #   Keep:     public_html/.well-known (do not overwrite or delete it)
 #
 # GitHub secrets (Settings → Secrets and variables → Actions):
-#   SITEGROUND_SSH_KEY   Private key that matches the public key added in Site Tools
-#   SITEGROUND_PATH      Full path to public_html (from Site Tools / SSH account details)
+#   SITEGROUND_SSH_KEY   Private key that matches the public key in Site Tools
+#                        (the key already imported there is named boxdeploy)
+#   SITEGROUND_PATH      /home/u1214-2rysfpfe4znk/www/socialbutterfly.agency/public_html
 # Optional overrides, only if SiteGround changes the login:
 #   SITEGROUND_HOST, SITEGROUND_PORT, SITEGROUND_USERNAME
 #
-# This job builds a public (indexable) copy and uploads index.html, assets/,
-# and robots.txt. It does not delete existing files, so WordPress files stay
-# until they are removed by hand after a backup. .well-known is excluded.
+# Uploads: index.html, assets/, robots.txt, sitemap.xml, and .htaccess.
 
 name: Upload to SiteGround
 
@@ -42,7 +44,8 @@ jobs:
         run: |
           if [ -z "$KEY" ] || [ -z "$REMOTE" ]; then
             echo "Add GitHub secrets SITEGROUND_SSH_KEY and SITEGROUND_PATH before running this workflow."
-            echo "SITEGROUND_PATH should be the full path to the site's public_html folder."
+            echo "SITEGROUND_PATH should be:"
+            echo "  /home/u1214-2rysfpfe4znk/www/socialbutterfly.agency/public_html"
             exit 1
           fi
 
@@ -67,9 +70,7 @@ jobs:
           HOST="${HOST:-gtxm1087.siteground.biz}"
           PORT="${PORT:-18765}"
           USER="${USER:-u1214-2rysfpfe4znk}"
-          # Normalize path: if only "public_html" is given, still use it as-is
-          # (set the full path in SITEGROUND_PATH when known).
           rsync -avz --exclude '.well-known' \
             -e "ssh -p $PORT -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=accept-new -o IdentitiesOnly=yes" \
-            _site/index.html _site/robots.txt _site/assets \
+            _site/index.html _site/robots.txt _site/sitemap.xml _site/.htaccess _site/assets \
             "$USER@$HOST:$REMOTE/"

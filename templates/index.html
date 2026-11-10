@@ -6,6 +6,19 @@
 {% endif %}<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ seo.title }}</title>
 <meta name="description" content="{{ seo.description }}">
+{% if production %}
+<link rel="canonical" href="https://socialbutterfly.agency/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Social Butterfly Communications">
+<meta property="og:url" content="https://socialbutterfly.agency/">
+<meta property="og:title" content="{{ seo.title }}">
+<meta property="og:description" content="{{ seo.description }}">
+<meta property="og:image" content="https://socialbutterfly.agency/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo.title }}">
+<meta name="twitter:description" content="{{ seo.description }}">
+<meta name="twitter:image" content="https://socialbutterfly.agency/assets/img/logo.png">
+{% endif %}
 <meta name="theme-color" content="#071C24">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preload" href="assets/fonts/barlow-800.woff2" as="font" type="font/woff2" crossorigin>

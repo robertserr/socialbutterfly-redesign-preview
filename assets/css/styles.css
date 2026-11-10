@@ -99,12 +99,17 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
 
 /* About */
 .about{overflow:hidden}
-.about__mark{will-change:transform;position:absolute;right:-60px;top:80px;width:min(460px,50vw);height:auto;opacity:.12;animation:flutter 7s ease-in-out infinite;transform-origin:30% 60%}
+.about__mark{will-change:transform;position:absolute;right:-60px;top:80px;width:min(460px,50vw);height:auto;opacity:.12;animation:flutter 7s ease-in-out infinite;transform-origin:30% 60%;pointer-events:none}
 @keyframes flutter{0%,100%{transform:rotate(-4deg) scaleX(1)}50%{transform:rotate(3deg) scaleX(.92)}}
-.about__statement{font:700 clamp(30px,4.2vw,58px)/1.12 var(--display);letter-spacing:.01em;max-width:1100px;margin-bottom:64px}
+.about__layout{display:grid;grid-template-columns:minmax(260px,400px) 1fr;grid-template-areas:"portrait copy" "portrait cols";gap:28px 72px;align-items:start}
+.about__portrait{grid-area:portrait;margin:0;position:relative;z-index:1}
+.about__portrait img{width:100%;height:auto;display:block;border-radius:var(--r);box-shadow:0 22px 48px rgba(7,28,36,.16),0 0 0 1px rgba(5,124,168,.08);background:var(--seafoam)}
+.about__portrait figcaption{margin-top:14px;font:600 16px/1.35 var(--sans);color:var(--accent-dark);text-align:center}
+.about__copy{grid-area:copy}
+.about__statement{font:700 clamp(30px,3.4vw,52px)/1.12 var(--display);letter-spacing:.01em;margin:0 0 0}
 .about__statement .w{color:rgba(27,24,48,.16);transition:color .5s}
 .about__statement .w.on{color:var(--text)}
-.about__cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:980px;font-size:clamp(17px,1.3vw,19px);color:var(--muted)}
+.about__cols{grid-area:cols;display:grid;grid-template-columns:1fr;gap:22px;max-width:none;font-size:clamp(17px,1.3vw,19px);color:var(--muted)}
 .about__cols strong{color:var(--text)}
 
 /* Services */
@@ -234,6 +239,10 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
   .cards,.quotes{grid-template-columns:1fr}
   .cards .card:last-child{grid-column:auto}
   .quote:nth-child(2){margin-top:0}
+  .about__layout{grid-template-columns:1fr;grid-template-areas:"copy" "portrait" "cols";gap:32px}
+  .about__portrait{max-width:420px;width:100%;justify-self:center}
+  .about__statement{font-size:clamp(30px,8vw,42px)}
+  .about__mark{width:min(320px,70vw);top:auto;bottom:-40px;right:-40px}
 }
 @media (max-width:340px){
   .hero__title .nw{white-space:normal}

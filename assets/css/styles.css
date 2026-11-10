@@ -101,16 +101,16 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
 .about{overflow:hidden}
 .about__mark{will-change:transform;position:absolute;right:-60px;top:80px;width:min(460px,50vw);height:auto;opacity:.12;animation:flutter 7s ease-in-out infinite;transform-origin:30% 60%;pointer-events:none}
 @keyframes flutter{0%,100%{transform:rotate(-4deg) scaleX(1)}50%{transform:rotate(3deg) scaleX(.92)}}
-.about__layout{display:grid;grid-template-columns:minmax(260px,400px) 1fr;grid-template-areas:"portrait copy" "portrait cols";gap:28px 72px;align-items:start}
+.about__layout{display:grid;grid-template-columns:minmax(260px,400px) 1fr;grid-template-rows:1fr auto auto 1fr;grid-template-areas:"portrait ." "portrait label" "portrait text" "portrait .";column-gap:72px;row-gap:18px;align-items:start}
+.about__label{grid-area:label;margin-bottom:0}
 .about__portrait{grid-area:portrait;margin:0;position:relative;z-index:1}
 .about__portrait img{width:100%;height:auto;display:block;border-radius:var(--r);box-shadow:0 22px 48px rgba(7,28,36,.16),0 0 0 1px rgba(5,124,168,.08);background:var(--seafoam)}
 .about__portrait figcaption{margin-top:14px;font:600 16px/1.35 var(--sans);color:var(--accent-dark);text-align:center}
-.about__copy{grid-area:copy}
-.about__statement{font:700 clamp(30px,3.4vw,52px)/1.12 var(--display);letter-spacing:.01em;margin:0 0 0}
-.about__statement .w{color:rgba(27,24,48,.16);transition:color .5s}
-.about__statement .w.on{color:var(--text)}
-.about__cols{grid-area:cols;display:grid;grid-template-columns:1fr;gap:22px;max-width:none;font-size:clamp(17px,1.3vw,19px);color:var(--muted)}
-.about__cols strong{color:var(--text)}
+.about__text{grid-area:text;display:grid;gap:22px;font-size:clamp(17px,1.35vw,20px);line-height:1.65;color:var(--muted);padding-bottom:8px}
+.about__lead{margin:0;color:var(--text);font-weight:500}
+.about__lead .w{color:rgba(18,49,60,.22);transition:color .5s}
+.about__lead .w.on{color:var(--text)}
+.about__body{margin:0}
 
 /* Services */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -225,9 +225,8 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
   .chip--a{left:-14%;top:16%}.chip--b{right:-12%}.chip--c{left:-8%}
   .chip{font-size:12.5px;padding:10px 14px}
   .phone{width:min(270px,70vw)}
-  .cards,.quotes,.about__cols,.form__row{grid-template-columns:1fr}
+  .cards,.quotes,.form__row{grid-template-columns:1fr}
   .cards .card:last-child{grid-column:auto}
-  .about__cols{gap:18px}
   .feed{grid-template-columns:repeat(2,1fr);gap:10px}
   .post{border-radius:16px}
   .post span{opacity:1;font-size:12px;padding:12px;display:none}
@@ -239,9 +238,9 @@ em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;ba
   .cards,.quotes{grid-template-columns:1fr}
   .cards .card:last-child{grid-column:auto}
   .quote:nth-child(2){margin-top:0}
-  .about__layout{grid-template-columns:1fr;grid-template-areas:"copy" "portrait" "cols";gap:32px}
+  .about__layout{grid-template-columns:1fr;grid-template-rows:auto;grid-template-areas:"label" "portrait" "text";column-gap:0;row-gap:28px}
   .about__portrait{max-width:420px;width:100%;justify-self:center}
-  .about__statement{font-size:clamp(30px,8vw,42px)}
+  .about__text{font-size:clamp(17px,4.4vw,19px);gap:18px}
   .about__mark{width:min(320px,70vw);top:auto;bottom:-40px;right:-40px}
 }
 @media (max-width:340px){

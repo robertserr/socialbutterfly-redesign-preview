@@ -46,20 +46,6 @@ content:
             label: Second button
             type: string
             description: The quieter button under the headline (for example, Explore services).
-          - name: tags
-            label: Floating tags
-            type: object
-            list: true
-            description: The three small labels that float around the phone photo (Strategy, Advertising, Content).
-            fields:
-              - name: emoji
-                label: Emoji
-                type: string
-                description: A single emoji shown on the tag.
-              - name: label
-                label: Label
-                type: string
-                description: The word on the tag.
       - name: banner
         label: Keyword banner
         type: string
@@ -130,7 +116,7 @@ content:
       - name: approach
         label: Slogan and approach
         type: object
-        description: The "We test. We optimize. We improve." section and the copy beside it.
+        description: The "We Test. We Optimize. We Take Flight." section and the copy beside it.
         fields:
           - name: line1
             label: Slogan, line 1

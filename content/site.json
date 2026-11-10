@@ -10,21 +10,7 @@
     "highlight": "Customers.",
     "subhead": "Strategic Social Media Services to Turn Interest into Action.",
     "primaryCta": "Let's Talk",
-    "secondaryCta": "Explore services",
-    "tags": [
-      {
-        "emoji": "🎯",
-        "label": "Strategy"
-      },
-      {
-        "emoji": "📈",
-        "label": "Advertising"
-      },
-      {
-        "emoji": "💬",
-        "label": "Content"
-      }
-    ]
+    "secondaryCta": "Explore services"
   },
   "banner": [
     "Paid and Organic Social Media Strategy",
@@ -69,9 +55,9 @@
     }
   ],
   "approach": {
-    "line1": "We test.",
-    "line2": "We optimize.",
-    "line3": "We improve.",
+    "line1": "We Test.",
+    "line2": "We Optimize.",
+    "line3": "We Take Flight.",
     "paragraph1": "We believe that social media should constantly evolve, just as technology does. 99 percent of the time, what worked last year – or last month – will yield less effective results in today’s marketplace. For this reason, we push ourselves to innovate new ways to spark curiosity and foster relationships.",
     "paragraph2": "Our focus on research and analysis contributes to content strategies that are rooted in measurable results. All too often, what separates well-executed campaigns from poorly performing content is an effective paid promotion strategy. This is why discovery, research and metrics are at the heart of our approach.",
     "steps": [
@@ -100,7 +86,7 @@
   "contact": {
     "heading": "Let's talk.",
     "headingHighlight": "talk.",
-    "intro": "Contact us today to learn how to inspire your followers to engage with your brand!",
+    "intro": "Contact us today for a social media presence with purpose.",
     "phone": "561.740.6714",
     "email": "meghan@socialbutterfly.agency",
     "facebook": "https://www.facebook.com/socialbutterflycommunicationsllc/",

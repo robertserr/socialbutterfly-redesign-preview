@@ -170,6 +170,8 @@ def build(noindex: bool = False, production: bool = False, out: Path | None = No
 
     highlight = data["hero"].get("highlight") or ""
     line2_html = highlight_in(data["hero"]["headlineLine2"], highlight)
+    line3 = data["hero"].get("headlineLine3") or ""
+    line3_html = highlight_in(line3, highlight) if line3 else ""
     heading = data["contact"].get("heading") or "Let's talk."
     heading_hl = data["contact"].get("headingHighlight") or "talk."
     contact_heading_html = highlight_in(heading, heading_hl)
@@ -177,7 +179,7 @@ def build(noindex: bool = False, production: bool = False, out: Path | None = No
     html_out = tmpl.render(
         noindex=bool(noindex or (not production and out_dir is None and noindex)),
         seo=data["seo"],
-        hero={**data["hero"], "line2_html": line2_html},
+        hero={**data["hero"], "line2_html": line2_html, "line3_html": line3_html},
         about=data["about"],
         approach=data["approach"],
         contact=data["contact"],
@@ -312,6 +314,8 @@ def main() -> None:
     tmpl = env.get_template("index.html")
     highlight = raw["hero"].get("highlight") or ""
     line2_html = highlight_in(raw["hero"]["headlineLine2"], highlight)
+    line3 = raw["hero"].get("headlineLine3") or ""
+    line3_html = highlight_in(line3, highlight) if line3 else ""
     heading = raw["contact"].get("heading") or "Let's talk."
     heading_hl = raw["contact"].get("headingHighlight") or "talk."
     html_out = tmpl.render(
@@ -319,7 +323,7 @@ def main() -> None:
         production=args.production,
         contact_form_action=("https://socialbutterfly.agency/contact.php" if noindex else "/contact.php"),
         seo=data["seo"],
-        hero={**data["hero"], "line2_html": line2_html},
+        hero={**data["hero"], "line2_html": line2_html, "line3_html": line3_html},
         about=data["about"],
         approach=data["approach"],
         contact=data["contact"],

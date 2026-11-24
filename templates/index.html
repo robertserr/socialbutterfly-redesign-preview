@@ -24,7 +24,7 @@
 <link rel="preload" href="assets/fonts/barlow-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/source-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/hero-poster-v2.webp" as="image" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/styles.css?v=4">
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="assets/img/favicon-64.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="assets/img/apple-touch.png">
@@ -60,7 +60,7 @@
   <div class="container hero__grid">
     <div class="hero__copy">
       <p class="eyebrow reveal"><span class="dot"></span> {{ hero.eyebrow }}</p>
-      <h1 class="hero__title split"><span class="nl">{{ hero.headlineLine1 }}</span> <span class="nw">{{ hero.line2_html|safe }}</span></h1>
+      <h1 class="hero__title split"><span class="nl">{{ hero.headlineLine1 }}</span> <span class="nl">{{ hero.headlineLine2 }}</span> <span class="nw">{{ hero.line3_html|safe }}</span></h1>
       <p class="hero__sub reveal" style="--d:.5s">{{ hero.subhead }}</p>
       <div class="hero__ctas reveal" style="--d:.65s">
         <a href="#contact" class="btn btn--glow">{{ hero.primaryCta }} <span aria-hidden="true">→</span></a>
@@ -103,6 +103,7 @@
     <div class="about__text">
       <p class="about__lead highlight reveal">{{ about.paragraph1 }}</p>
       <p class="about__body reveal" style="--d:.1s">{{ about.paragraph2 }}</p>
+      <p class="about__body reveal" style="--d:.2s">{{ about.paragraph3 }}</p>
     </div>
   </div>
 </section>
@@ -134,6 +135,7 @@
     <div class="approach__copy glass reveal" style="--d:.2s">
       <p>{{ approach.paragraph1 }}</p>
       <p>{{ approach.paragraph2 }}</p>
+      <p>{{ approach.paragraph3 }}</p>
     </div>
   </div>
 </section>

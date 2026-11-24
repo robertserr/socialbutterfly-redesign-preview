@@ -168,5 +168,28 @@
     });
   }
 
+
+  document.querySelectorAll('.work__phone').forEach((wrap) => {
+    const vid = wrap.querySelector('video');
+    const btn = wrap.querySelector('.work__play');
+    if (!vid || !btn) return;
+    const setPlaying = (on) => {
+      wrap.classList.toggle('is-playing', on);
+      vid.controls = on;
+    };
+    // Keep native controls in the markup for no-JS, but hide them behind
+    // the play button until the visitor starts the video.
+    vid.controls = false;
+    btn.addEventListener('click', () => { vid.play(); });
+    vid.addEventListener('play', () => setPlaying(true));
+    vid.addEventListener('pause', () => {
+      if (vid.ended || vid.currentTime < 0.2) setPlaying(false);
+    });
+    vid.addEventListener('ended', () => {
+      setPlaying(false);
+      try { vid.currentTime = 0; } catch (e) {}
+    });
+  });
+
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();

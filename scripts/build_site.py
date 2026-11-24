@@ -340,6 +340,11 @@ def main() -> None:
             raw.get("servicesHeading", {}).get("heading") or "Smarter social media starts here",
             raw.get("servicesHeading", {}).get("headingHighlight") or "starts here",
         ),
+        work=data["work"],
+        work_heading_html=highlight_in(
+            raw.get("work", {}).get("heading") or "Client work",
+            raw.get("work", {}).get("headingHighlight") or "",
+        ),
     )
     write_outputs(html_out, args.production, args.out, args.out_dir)
 

@@ -12,7 +12,7 @@
 <link rel="preload" href="assets/fonts/barlow-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/source-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/hero-poster-v2.webp" as="image" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/styles.css?v=4">
+<link rel="stylesheet" href="assets/css/styles.css?v=5">
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="assets/img/favicon-64.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="assets/img/apple-touch.png">
@@ -29,12 +29,13 @@
       <a href="#approach">Approach</a>
       <a href="#social">Social Media</a>
       <a href="#testimonials">Testimonials</a>
+      <a href="#work">Work</a>
     </nav>
     <a href="#contact" class="btn btn--sm btn--glow nav__cta">Let's Talk <span aria-hidden="true">→</span></a>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#about">About</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#social">Social Media</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#social">Social Media</a><a href="#testimonials">Testimonials</a><a href="#work">Work</a><a href="#contact">Contact</a>
   </div>
 </header>
 
@@ -176,6 +177,38 @@
   </div>
 </section>
 
+
+<!-- CLIENT WORK -->
+<section class="work section" id="work">
+  <div class="container">
+    <div class="section__head">
+      <p class="label reveal">Client work</p>
+      <h2 class="h2 split">Campaigns for <em>our clients</em></h2>
+    </div>
+    
+    <article class="work__item reveal">
+      <div class="work__copy">
+        <p class="work__client">FHE Health</p>
+        <h3 class="work__title">Veterans Day campaign</h3>
+        <p class="work__body">A Veterans Day campaign for FHE Health’s Shatterproof Military &amp; Veterans Program.</p>
+      </div>
+      <div class="work__media">
+        <div class="work__phone">
+          <video controls playsinline preload="metadata" poster="assets/video/work-fhe-veterans-v1-poster.webp" width="720" height="1280" title="FHE Health — Veterans Day campaign">
+            <source src="assets/video/work-fhe-veterans-v1.mp4" type="video/mp4">
+          </video>
+          <button class="work__play" type="button" aria-label="Play FHE Health Veterans Day campaign video">
+            <span class="work__play-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </article>
+    
+  </div>
+</section>
+
 <!-- SOCIAL FEED -->
 <section class="social section section--dark" id="social">
   <div class="container">
@@ -254,6 +287,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>

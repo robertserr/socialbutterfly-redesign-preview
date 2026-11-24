@@ -86,6 +86,22 @@
       "role": "Owner"
     }
   ],
+  "work": {
+    "label": "Client work",
+    "heading": "Campaigns for our clients",
+    "headingHighlight": "our clients",
+    "items": [
+      {
+        "client": "FHE Health",
+        "title": "Veterans Day campaign",
+        "body": "A Veterans Day campaign for FHE Health’s Shatterproof Military & Veterans Program.",
+        "video": "assets/video/work-fhe-veterans-v1.mp4",
+        "poster": "assets/video/work-fhe-veterans-v1-poster.webp",
+        "width": 720,
+        "height": 1280
+      }
+    ]
+  },
   "contact": {
     "heading": "Let's talk.",
     "headingHighlight": "talk.",

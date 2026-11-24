@@ -98,7 +98,10 @@
         "video": "assets/video/work-fhe-veterans-v1.mp4",
         "poster": "assets/video/work-fhe-veterans-v1-poster.webp",
         "width": 720,
-        "height": 1280
+        "height": 1280,
+        "likes": 3,
+        "comments": 0,
+        "shares": null
       }
     ]
   },

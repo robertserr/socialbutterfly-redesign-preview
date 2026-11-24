@@ -24,7 +24,7 @@
 <link rel="preload" href="assets/fonts/barlow-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/source-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/hero-poster-v2.webp" as="image" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="assets/css/styles.css?v=5">
+<link rel="stylesheet" href="assets/css/styles.css?v=6">
 <link rel="icon" href="assets/img/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="assets/img/favicon-64.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="assets/img/apple-touch.png">
@@ -173,6 +173,20 @@
           <video controls playsinline preload="metadata" poster="{{ item.poster }}" width="{{ item.width }}" height="{{ item.height }}" title="{{ item.client }} — {{ item.title }}">
             <source src="{{ item.video }}" type="video/mp4">
           </video>
+          <ul class="work__eng" aria-hidden="true">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linejoin="round" focusable="false"><path d="M12 20.2S4.2 15.2 4.2 9.6c0-2.7 2.1-4.7 4.6-4.7 1.5 0 2.7.7 3.2 1.9.5-1.2 1.7-1.9 3.2-1.9 2.5 0 4.6 2 4.6 4.7 0 5.6-7.8 10.6-7.8 10.6z"/></svg>
+              {% if item.likes is not none %}<span class="work__eng-count">{{ item.likes }}</span>{% endif %}
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linejoin="round" stroke-linecap="round" focusable="false"><path d="M6.5 6.2C6.5 4.7 7.7 3.5 9.2 3.5h7.6c1.5 0 2.7 1.2 2.7 2.7v6.2c0 1.5-1.2 2.7-2.7 2.7h-3.4L8.2 18.8v-3.7H9.2c-1.5 0-2.7-1.2-2.7-2.7V6.2z"/></svg>
+              {% if item.comments is not none %}<span class="work__eng-count">{{ item.comments }}</span>{% endif %}
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linejoin="round" stroke-linecap="round" focusable="false"><path d="M14 4.8h5.2V10"/><path d="M19.2 4.8 10.4 13.6"/><path d="M16.8 12.4v3.4c0 1.5-1.2 2.7-2.7 2.7H7.5c-1.5 0-2.7-1.2-2.7-2.7V9.9c0-1.5 1.2-2.7 2.7-2.7h3.6"/></svg>
+              {% if item.shares is not none %}<span class="work__eng-count">{{ item.shares }}</span>{% endif %}
+            </li>
+          </ul>
           <button class="work__play" type="button" aria-label="Play {{ item.client }} {{ item.title }} video">
             <span class="work__play-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M8 5v14l11-7z"/></svg>

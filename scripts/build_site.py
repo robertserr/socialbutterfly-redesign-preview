@@ -220,7 +220,7 @@ AddHandler application/x-httpd-php74 .php
 
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType text/html "access plus 5 minutes"
+  ExpiresByType text/html "access plus 0 seconds"
   ExpiresByType text/css "access plus 7 days"
   ExpiresByType application/javascript "access plus 7 days"
   ExpiresByType image/webp "access plus 30 days"
@@ -236,7 +236,7 @@ AddHandler application/x-httpd-php74 .php
 
 <FilesMatch "\\.(html)$">
   <IfModule mod_headers.c>
-    Header set Cache-Control "public, max-age=300, must-revalidate"
+    Header set Cache-Control "no-cache, must-revalidate"
   </IfModule>
 </FilesMatch>
 """

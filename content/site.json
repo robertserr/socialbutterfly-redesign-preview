@@ -87,6 +87,7 @@
     }
   ],
   "work": {
+    "enabled": false,
     "label": "Client work",
     "heading": "Campaigns for our clients",
     "headingHighlight": "our clients",

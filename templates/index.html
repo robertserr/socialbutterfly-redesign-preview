@@ -41,13 +41,13 @@
       <a href="#approach">Approach</a>
       <a href="#social">Social Media</a>
       <a href="#testimonials">Testimonials</a>
-      <a href="#work">Work</a>
+      {% if work.enabled %}<a href="#work">Work</a>{% endif %}
     </nav>
     <a href="#contact" class="btn btn--sm btn--glow nav__cta">{{ hero.primaryCta }} <span aria-hidden="true">→</span></a>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#about">About</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#social">Social Media</a><a href="#testimonials">Testimonials</a><a href="#work">Work</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#social">Social Media</a><a href="#testimonials">Testimonials</a>{% if work.enabled %}<a href="#work">Work</a>{% endif %}<a href="#contact">Contact</a>
   </div>
 </header>
 
@@ -154,6 +154,7 @@
 </section>
 
 
+{% if work.enabled %}
 <!-- CLIENT WORK -->
 <section class="work section" id="work">
   <div class="container">
@@ -198,6 +199,8 @@
     {% endfor %}
   </div>
 </section>
+
+{% endif %}
 
 <!-- SOCIAL FEED -->
 <section class="social section section--dark" id="social">
